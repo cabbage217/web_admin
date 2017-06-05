@@ -1,6 +1,6 @@
 package com.exemple.demo.Exception;
 
-import com.exemple.exemple.enums.ResultEnum;
+import com.exemple.demo.enums.ResultEnum;
 
 /**
  * Created by Caby on 5/17/17.
