@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>管理后台 - 接口列表</title>
+    <style>
+        .layui-table {
+            display: none;
+        }
+        #add_interface_form_container,
+        #change_navigation_form_container,
+        #change_roles_table_container {
+            padding: 20px;
+        }
+        #btn_add_interface_container {
+            margin-top: 30px;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        #btn_add_interface_confirm {
+            margin-right: 30px;
+        }
+        .navigation_interface_in {
+            margin-left: 10px;
+            font-size: 13px;
+            font-weight: lighter;
+        }
+        #btn_change_navigation_container {
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            bottom: 10px;
+        }
+        #btn_change_navigation {
+            margin: auto 10%;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+<div id="page_header"></div>
+<div id="page_nav_left"></div>
+<div id="page_main_container">
+    <div id="main_container">
+        <div>
+            <button id="btn_add_interface" class="layui-btn">添加接口</button>
+        </div>
+        <table class="layui-table">
+            <colgroup>
+                <col width="50">
+                <col width="150">
+                <col width="50">
+                <col width="200">
+                <col width="100">
+                <col width="100">
+                <col width="200">
+                <col width="200">
+            </colgroup>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>接口名</th>
+                <th>类型</th>
+                <th>url</th>
+                <th>排序权重</th>
+                <th>状态</th>
+                <th>添加时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="interfaceListContainer"></tbody>
+        </table>
+        <div id="pagination"></div>
+    </div>
+</div>
+<div id="page_footer"></div>
+<div id="add_interface_html_container" style="display: none;">
+    <div id="add_interface_form_container">
+        <form id="add_interface_form" class="layui-form" action="">
+            <input type="hidden" name="iid" value="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">接口名称：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="name" lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">url：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="url" lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">接口类型：</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="type" value="0" title="API">
+                    <input type="radio" name="type" value="1" title="页面">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">排序权重：</label>
+                <div class="layui-input-inline">
+                    <input type="number" name="orderNumber" autocomplete="off" class="layui-input" value="0">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="status" lay-skin="switch" lay-text="正常|禁用" value="0">
+                </div>
+            </div>
+            <div id="btn_add_interface_container" class="layui-form-item">
+                <button id="btn_add_interface_confirm" class="layui-btn" lay-submit lay-filter="confirm">确定</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="change_navigation_html_container" style="display: none;">
+    <div id="change_navigation_form_container">
+        <form id="change_navigation_form" class="layui-form" action="">
+            <input type="hidden" name="iid" value="#{iid}}">
+            <div class="layui-form-item">
+                <label class="layui-form-label">导航栏：</label>
+                <div class="layui-input-block">
+                    <select name="nid" lay-verify="required">
+                        <option value="-1">请选择导航栏</option>
+                    </select>
+                </div>
+            </div>
+            <div id="btn_change_navigation_container" class="layui-form-item">
+                <button id="btn_change_navigation" class="layui-btn" lay-submit lay-filter="confirm_changing_navigation">确定</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="change_roles_html_container" style="display: none;">
+    <div id="change_roles_table_container">
+        <div id="btn_change_roles_container" class="layui-form-item">
+            <button id="btn_change_roles_confirm" class="layui-btn">确定</button>
+            <button id="btn_change_roles_cancel" class="layui-btn">取消</button>
+        </div>
+        <form id="change_roles_form" class="layui-form" action="">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="50">
+                    <col width="150">
+                    <col width="250">
+                    <col width="100">
+                    <col width="100">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>角色名</th>
+                    <th>描述</th>
+                    <th>状态</th>
+                    <th>
+                        <div class="layui-inline">
+                            <input type="checkbox" lay-skin="primary" lay-filter="checkAll" title="全选">
+                        </div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody id="roleListContainer"></tbody>
+            </table>
+        </form>
+    </div>
+</div>
+<script src="layui/layui.js"></script>
+<script src="js/config.js"></script>
+<script src="js/interfaceList.js"></script>
+</body>
+</html>

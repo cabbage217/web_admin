@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>管理后台 - 用户列表</title>
+    <style>
+        .layui-table {
+            display: none;
+        }
+        #add_user_form_container,
+        #change_roles_table_container {
+            padding: 20px;
+        }
+        #btn_add_user_container {
+            margin-top: 30px;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        #btn_add_user_confirm {
+            margin-right: 30px;
+        }
+    </style>
+</head>
+<body>
+<div id="page_header"></div>
+<div id="page_nav_left"></div>
+<div id="page_main_container">
+    <div id="main_container">
+        <div>
+            <button id="btn_add_user" class="layui-btn">添加用户</button>
+        </div>
+        <table class="layui-table">
+            <colgroup>
+                <col width="50">
+                <col width="150">
+                <col width="250">
+                <col width="50">
+                <col width="200">
+                <col width="200">
+            </colgroup>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>用户名</th>
+                <th>角色</th>
+                <th>状态</th>
+                <th>添加时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="userListContainer"></tbody>
+        </table>
+        <div id="pagination"></div>
+    </div>
+</div>
+<div id="page_footer"></div>
+<div id="add_user_html_container" style="display: none;">
+    <div id="add_user_form_container">
+        <form id="add_user_form" class="layui-form" action="">
+            <input type="hidden" name="uid" value="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="username" lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">新密码：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="pwd" lay-verify="required" autocomplete="off" class="layui-input" value="123456">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="status" lay-skin="switch" lay-text="正常|禁用" value="0">
+                </div>
+            </div>
+            <div id="btn_add_user_container" class="layui-form-item">
+                <button id="btn_add_user_confirm" class="layui-btn" lay-submit lay-filter="confirm">确定</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="change_roles_html_container" style="display: none;">
+    <div id="change_roles_table_container">
+        <div id="btn_change_roles_container" class="layui-form-item">
+            <button id="btn_change_roles_confirm" class="layui-btn">确定</button>
+            <button id="btn_change_roles_cancel" class="layui-btn">取消</button>
+        </div>
+        <form id="change_roles_form" class="layui-form" action="">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="50">
+                    <col width="150">
+                    <col width="250">
+                    <col width="100">
+                    <col width="100">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>角色名</th>
+                    <th>描述</th>
+                    <th>状态</th>
+                    <th>
+                        <div class="layui-inline">
+                            <input type="checkbox" lay-skin="primary" lay-filter="checkAll" title="全选">
+                        </div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody id="roleListContainer"></tbody>
+            </table>
+        </form>
+    </div>
+</div>
+<script src="layui/layui.js"></script>
+<script src="js/config.js"></script>
+<script src="js/userList.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+* {
+    margin: 0 auto;
+}
+html, body {
+    height: 100%;
+}
+#page_header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0;
+    text-align: right;
+    z-index: 9999;
+}
+#main_nav_left {
+    top: 60px;
+    border-radius: 0;
+}
+.layui-nav {
+    border-radius: 0;
+}
+#page_main_container {
+    margin: 0 0 -60px 200px;
+    min-height: 100%;
+    clear: both;
+}
+#page_main_container:before {
+    display: block;
+    height: 60px;
+    content: "";
+}
+#page_main_container:after {
+    content: "";
+    display: block;
+}
+#page_footer {
+    margin-left: 200px;
+    color: #333333;
+    vertical-align: middle;
+    background-color: #eeeeee;
+    font-weight: lighter;
+    clear: both;
+}
+#page_footer, #page_main_container:after {
+    height: 60px;
+}
+#page_footer .page_footer_container {
+    height: 40px;
+    padding: 10px;
+    overflow: hidden;
+    text-align: center;
+}
+#main_container {
+    width: 94%;
+    margin: 2% 3%;
+}
+#page_header_reset_pwd_form_container {
+    padding: 20px;
+}
+#btn_page_header_reset_pwd_container {
+    margin-top: 30px;
+    margin-bottom: 0;
+    text-align: center;
+}
+#page_header_reset_pwd_confirm {
+    margin-right: 30px;
+}
