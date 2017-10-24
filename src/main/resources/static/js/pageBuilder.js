@@ -3,8 +3,8 @@
  */
 
 layui.define(['jquery', 'layer', 'element', 'commonUtils', 'form', 'commonLoading', 'sha1', 'md5'], function (exports) {
-    var $ = layui.jquery, _layer = layui.layer, _domElement = layui.element(), _utils = layui.commonUtils,
-        _form = layui.form(), _loading = layui.commonLoading, _sha1 = layui.sha1, _md5 = layui.md5;
+    var $ = layui.jquery, _layer = layui.layer, _domElement = layui.element, _utils = layui.commonUtils,
+        _form = layui.form, _loading = layui.commonLoading, _sha1 = layui.sha1, _md5 = layui.md5;
     var _hasBuilt = false;
     // 页头
     function _buildHeader() {

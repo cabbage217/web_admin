@@ -4,11 +4,10 @@
 ;(function () {
     function userListFunc() {
         var _utils = layui.commonUtils, _loading = layui.commonLoading, $ = layui.jquery, _layer = layui.layer,
-            _dateFormat = layui.dateFormat, _pager = layui.laypage, _form = layui.form(), _md5 = layui.md5,
+            _dateFormat = layui.dateFormat, _pager = layui.laypage, _form = layui.form, _md5 = layui.md5,
             _sha1 = layui.sha1, _multipleCheckbox = layui.multipleCheckbox;
         // fetch data
         var _userListContainer = $('#userListContainer');
-        var _pagination = $('#pagination');
         var _userList = {};
         function getUserList(obj, first) {
             if (first) return;
@@ -56,7 +55,7 @@
                 }
                 if (!first) {
                     setTimeout(function () {
-                        _pager({cont: _pagination, pages: Math.ceil(totalCount / pageSize), curr: pageNo, jump: getUserList});
+                        _pager.render({elem: 'pagination', count: totalCount, limit: pageSize, curr: pageNo, jump: getUserList});
                     }, 0);
                 }
             });

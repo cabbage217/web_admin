@@ -13,7 +13,7 @@ layui.define(['jquery'], function(exports) {
         if (!result) return;
         if (result.code == -5) {
             if (_sessionInvalided === false) {
-                window.location.href = '/login.html?redirect=' + _urlencode(window.location.href);
+                window.location.href = '/system/login.html?redirect=' + _urlencode(window.location.href);
                 _sessionInvalided = true;
             }
             return false;
@@ -154,10 +154,10 @@ layui.define(['jquery'], function(exports) {
         var params = {};
         var idx = url.indexOf("?");
         if (idx != -1) {
-            var paramsStr = _urldecode(url.substr(idx + 1)).split("&");
+            var paramsStr = url.substr(idx + 1).split("&");
             for(var i = 0; i < paramsStr.length; ++i) {
                 var item = paramsStr[i].split("=");
-                params[item[0]] = item[1] || '';
+                params[item[0]] = _urldecode(item[1]) || '';
             }
         }
         return params;

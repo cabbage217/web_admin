@@ -2,7 +2,7 @@
  * Created by Caby on 3/24/17.
  */
 layui.define(['jquery','form'], function(exports) {
-    var $ = layui.jquery, form = layui.form();
+    var $ = layui.jquery, form = layui.form;
     var _allIds = [], _checkedIds = [];
     var _options = {
         'checkbox_filter': 'checkMe',

@@ -4,11 +4,10 @@
 ;(function () {
     function interfaceListFunc() {
         var _utils = layui.commonUtils, _loading = layui.commonLoading, $ = layui.jquery, _layer = layui.layer,
-            _dateFormat = layui.dateFormat, _pager = layui.laypage, _form = layui.form(),
+            _dateFormat = layui.dateFormat, _pager = layui.laypage, _form = layui.form,
             _multipleCheckbox = layui.multipleCheckbox;
         // fetch data
         var _interfaceListContainer = $('#interfaceListContainer');
-        var _pagination = $('#pagination');
         var _interfaceList = {};
         function getInterfaceList(obj, first) {
             if (first) return;
@@ -63,7 +62,7 @@
                 }
                 if (!first) {
                     setTimeout(function () {
-                        _pager({cont: _pagination, pages: Math.ceil(totalCount / pageSize), curr: pageNo, jump: getInterfaceList});
+                        _pager.render({elem: 'pagination', count: totalCount, limit: pageSize, curr: pageNo, jump: getInterfaceList});
                     }, 0);
                 }
             });

@@ -4,7 +4,7 @@
 ;(function () {
     function loginFunc() {
         var _layer = layui.layer, _utils = layui.commonUtils, _loading = layui.commonLoading,
-            _md5 = layui.md5, _form = layui.form(), _sha1 = layui.sha1;
+            _md5 = layui.md5, _form = layui.form, _sha1 = layui.sha1;
         _form.on('submit(formLogin)', function(data){
             _loading.showLoading();
             _utils.post('/api/login/login',

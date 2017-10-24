@@ -4,11 +4,10 @@
 ;(function () {
     function roleListFunc() {
         var _utils = layui.commonUtils, _loading = layui.commonLoading, $ = layui.jquery, _layer = layui.layer,
-            _dateFormat = layui.dateFormat, _pager = layui.laypage, _form = layui.form();
+            _dateFormat = layui.dateFormat, _pager = layui.laypage, _form = layui.form;
 
         // fetch data
         var _roleListContainer = $('#roleListContainer');
-        var _pagination = $('#pagination');
         var _roleList = {};
         function getRoleList(obj, first) {
             if (first) return;
@@ -46,7 +45,7 @@
                 }
                 if (!first) {
                     setTimeout(function () {
-                        _pager({cont: _pagination, pages: Math.ceil(totalCount / pageSize), curr: pageNo, jump: getRoleList});
+                        _pager.render({elem: 'pagination', count: totalCount, limit: pageSize, curr: pageNo, jump: getRoleList});
                     }, 0);
                 }
             });

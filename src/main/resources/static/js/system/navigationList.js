@@ -4,10 +4,9 @@
 ;(function () {
     function navigationListFunc() {
         var _utils = layui.commonUtils, _loading = layui.commonLoading, $ = layui.jquery, _layer = layui.layer,
-            _dateFormat = layui.dateFormat, _pager = layui.laypage, _form = layui.form();
+            _dateFormat = layui.dateFormat, _pager = layui.laypage, _form = layui.form;
         // fetch data
         var _nagvigationListContainer = $('#navigationListContainer');
-        var _pagination = $('#pagination');
         var _navigationList = {};
         function getNavigationList(obj, first) {
             if (first) return;
@@ -46,7 +45,7 @@
                     _layer.msg(result.msg ? result.msg : '获取导航栏列表失败');
                 }
                 !first && setTimeout(function () {
-                    _pager({cont: _pagination, pages: Math.ceil(totalCount / pageSize), curr: pageNo, jump: getNavigationList});
+                    _pager.render({elem: 'pagination', count: totalCount, limit: pageSize, curr: pageNo, jump: getNavigationList});
                 }, 0);
             });
         }
