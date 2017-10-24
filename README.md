@@ -3,3 +3,6 @@
 
 ## 配置
 创建mysql数据库后，修改application-dev.yml中数据库配置，再执行init.sql文件，无需更多配置
+
+## 管理员账号
+执行init.sql会生成一个管理员账号，用户名为admin，密码是123456
